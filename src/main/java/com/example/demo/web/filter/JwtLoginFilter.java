@@ -63,7 +63,7 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter  {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException, IOException, ServletException {
         User user = new ObjectMapper().readValue(req.getInputStream(),User.class);
-        return getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword()));
+        return getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword()));//这个方法进行账号和用户名的验证
     }
 
     /**

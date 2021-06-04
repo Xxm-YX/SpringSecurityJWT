@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * 对token进行解析 看是否失效
+ */
 public class JwtFilter extends GenericFilter {
     //校验
     @Override

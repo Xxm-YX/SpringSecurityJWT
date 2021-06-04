@@ -40,8 +40,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
+                //这个地方是在UsernamePasswordAuthenticationFilter这个过滤器之前加过滤器
                 .addFilterBefore(new JwtLoginFilter("/login",authenticationManager()), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(new JwtFilter(),UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(new JwtFilter(),UsernamePasswordAuthenticationFilter.class)
                 .csrf()
                 .disable();
     }
